@@ -7,7 +7,7 @@ def is_invalid_num(num):
 
 def find_duplicate(nums, start_index=0):
     length = len(nums)
-    if start_index >= length or length == 1:
+    if start_index >= (length - 1) or length == 1:
         return False
 
     for i in range(start_index + 1, length):
