@@ -1,3 +1,6 @@
+from challenges.utils.quick_sort import quick_sort
+
+
 def is_invalid_num(num):
     if type(num) is not int or num < 0:
         return True
@@ -5,14 +8,15 @@ def is_invalid_num(num):
         return False
 
 
-def find_duplicate(nums, start_index=0):
+def find_duplicate(nums):
     length = len(nums)
-    if start_index >= (length - 1) or length == 1:
+    if length <= 1:
         return False
+    quick_sort(nums)
 
-    for i in range(start_index + 1, length):
-        if is_invalid_num(nums[i]) or is_invalid_num(nums[start_index]):
+    for i in range(1, length):
+        if is_invalid_num(nums[i - 1]) or is_invalid_num(nums[i]):
             return False
-        if nums[start_index] == nums[i]:
-            return nums[start_index]
-    return find_duplicate(nums, start_index + 1)
+        if nums[i - 1] == nums[i]:
+            return nums[i]
+    return False
